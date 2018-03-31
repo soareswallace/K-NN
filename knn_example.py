@@ -3,18 +3,6 @@ import random
 import math
 import operator
 
-def loadDataset(filename, split, traningSet = [], testSet = []):
-    with open(filename, 'rb') as csvfile:
-        lines = csv.reader(csvfile)
-        dataset = list(lines)
-        for x in range(len(dataset)-1):
-            for y  in range(4): # por conta dos atributos que eu quero usar na distancia euclidiana
-                dataset[x][y] = float(dataset[x][y])
-            if random.random() < split:
-                traningSet.append(dataset[x])
-            else:
-                testSet.append(dataset[x])
-
 def euclideanDistance(instance1, instance2, vector_size):
 	distance = 0
 	for x in range(vector_size):
