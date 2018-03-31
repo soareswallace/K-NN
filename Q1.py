@@ -7,12 +7,10 @@ from knn_example import getResponse, getNeighbors, getAccuracy
 
 
 def main():
-    data = arff.loadarff('kc2.arff')
-    data_set = pd.DataFrame(data[0])
-    X = np.array(data_set.ix[:, 0:21])
+    data_set = pd.read_csv('kc2.data')
+    X = np.array(data_set.drop(['problems'], 1))
     y = np.array(data_set['problems'])
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.33, random_state=42)
-    
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
     predictions = []
     k = 1
     for x in range(len(X_test)):
