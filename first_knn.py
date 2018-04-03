@@ -1,14 +1,8 @@
 import csv
 import random
-import math
+from euclideanDistance import euclideanDistance
 import operator
-
-def euclideanDistance(instance1, instance2, vector_size):
-	distance = 0
-	for x in range(vector_size):
-		distance += pow((instance1[x] - instance2[x]), 2)
-	return math.sqrt(distance)
-
+import random
 
 def getNeighbors(trainingSet, testInstance, k):
 	distances = []
@@ -42,23 +36,9 @@ def getAccuracy(testSet, predictions):
 			correct += 1
 	return (correct/float(len(testSet))) * 100.0	
 
-# def main():
-# 	# prepare data
-# 	trainingSet=[]
-# 	testSet=[]
-# 	split = 0.67
-# 	#nao eh um proporcao, eh uma fator que pode determinar se o dado eh de test ou de treinamento. 
-# 	loadDataset('iris.data', split, trainingSet, testSet)
-# 	print 'Train set: ' + repr(len(trainingSet))
-# 	print 'Test set: ' + repr(len(testSet))
-# 	# generate predictions
-# 	predictions=[]
-# 	k = 3
-# 	for x in range(len(testSet)):
-# 		neighbors = getNeighbors(trainingSet, testSet[x], k)
-# 		result = getResponse(neighbors)
-# 		predictions.append(result)
-# 	accuracy = getAccuracy(testSet, predictions)
-# 	print('Accuracy: ' + repr(accuracy) + '%')
-	
-# main()
+trainingSet=[]
+testSet=[]
+loadDataset('kc2.data', 0.66, trainingSet, testSet)
+print 'Train: ' + repr(len(trainingSet))
+print 'Test: ' + repr(len(testSet))
+print trainingSet
